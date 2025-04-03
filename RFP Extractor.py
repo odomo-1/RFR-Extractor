@@ -59,7 +59,8 @@ def process_rfp(file, file_type):
     # Clean the extracted text
     text = clean_text(text)
 
-    nlp = spacy.load("en_core_web_sm")
+    # Load the local SpaCy model
+    nlp = spacy.load("./en_core_web_sm")
     
     # Define broader keyword sets for each section
     scope_keywords = [
@@ -102,7 +103,7 @@ def process_rfp(file, file_type):
     
     extracted_info = {
         "Category": [
-            "Scope of Work",  "Methodology", "Eligibility", "Budget", "Deadlines",
+            "Scope of Work", "Methodology", "Eligibility", "Budget", "Deadlines",
             "Selection Process"
         ],
         "Details": [
@@ -112,7 +113,7 @@ def process_rfp(file, file_type):
             "\n".join(extract_sentences_with_keywords(text, budget_keywords, assigned_sentences)),
             "\n".join(extract_named_entities(text, nlp, "DATE", assigned_sentences)),
             "\n".join(extract_sentences_with_keywords(text, selection_process_keywords, assigned_sentences)),
-            ]
+        ]
     }
     
     # Convert to DataFrame
