@@ -5,13 +5,6 @@ import streamlit as st
 from pdfminer.high_level import extract_text
 from docx import Document  # Import for handling Word documents
 
-# Ensure the SpaCy model is downloaded
-import spacy.cli
-try:
-    spacy.load("en_core_web_sm")
-except OSError:
-    spacy.cli.download("en_core_web_sm")
-
 def extract_text_from_pdf(pdf_file):
     """Extract text from an uploaded PDF file."""
     return extract_text(pdf_file)
@@ -66,8 +59,8 @@ def process_rfp(file, file_type):
     # Clean the extracted text
     text = clean_text(text)
 
-    # Load the SpaCy model
-    nlp = spacy.load("en_core_web_sm")
+    # Load the local SpaCy model
+    nlp = spacy.load("./en_core_web_sm")
     
     # Define broader keyword sets for each section
     scope_keywords = [
