@@ -60,7 +60,7 @@ def process_rfp(file, file_type):
     text = clean_text(text)
 
     # Load the local SpaCy model
-    nlp = spacy.load("./en_core_web_sm")
+    nlp = spacy.load("C:\Users\Sahel Consulting\Desktop\Personal\Professional Course\DataLab\Python Class\Machine Learning\Building Web Application Using streamlit\en_core_web_sm")
     
     # Define broader keyword sets for each section
     scope_keywords = [
